@@ -101,6 +101,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "manager.User"
+
 LOGIN_REDIRECT_URL = "/"
 
 # Internationalization

@@ -31,19 +31,24 @@ admin.site.register(Currancy)
 
 @admin.register(Card)
 class CardAdmin(ModelAdmin):
-    list_display = ("currancy", "name", "type", "balance",)
+    list_display = ("users", "currancy", "bank_name", "type", "balance",)
 
 
-admin.site.register(Cash)
+@admin.register(Cash)
+class CashAdmin(ModelAdmin):
+    list_display = ("users", "currancy", "balance",)
 
-admin.site.register(Cryptocurrency)
+
+@admin.register(Cryptocurrency)
+class CryptocurrencyAdmin(ModelAdmin):
+    list_display = ("users", "name", "balance",)
 
 
 @admin.register(Accountancy)
 class AccountancyAdmin(ModelAdmin):
     list_display = (
         "users",
-        "wallet",
+        "wallet_id",
         "wallet_type",
         "io",
         "io_type",

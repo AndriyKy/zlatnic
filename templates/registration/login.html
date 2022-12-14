@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block header %}{% endblock header %}
+
+{% block content %}
+  <div class="log_body">
+    
+    {% include "includes/welcome_info.html" %}
+
+    <form action="{% url 'login' %}" method="POST" class="registration big_black_plate fit_content">
+      {% csrf_token %}
+      
+      <h1 style="padding-left: 34px;" class="regular_text_shadow">
+        Authorization
+      </h1>
+
+      {% if form.errors %}
+        <div class="error_message regular_text_shadow">
+          Your username/password didn't match. Please try again.
+        </div>
+      {% endif %}
+      
+      <div class="big_plate">
+        <input type="input" class="input_data" name="username" id="inputEmail" placeholder="Username" required >
+      </div>
+      <div class="big_plate">
+        <input type="password" class="input_data" name="password" id="inputPass" placeholder="Password" required>
+      </div>
+      
+      <div class="big_plate">
+        If you don't have an account,
+        <a href="{% url 'manager:register' %}" class="text_shadow">
+          register!
+        </a>
+      </div>
+
+      <input type="submit" value="Login" class="button orange_background text_shadow">
+      <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+  </div>
+{% endblock content %}
+
+{% block menu %}{% endblock menu %}
+
+{% block footer %}{% endblock footer %}

@@ -1,0 +1,41 @@
+<header class="header _oi_shadow">
+  <div class="header_div">
+    <table>
+      <tr>
+        <td><img class="logo" src="/static/source/welcome_logo.png" alt="zlatnic"></td>
+        <td class="hidden regular_text_shadow">
+          <h1>ZLATNIC</h1>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="header_div _marmalade_small">
+    <span class="date text_shadow">
+      {% now "jS M Y" %}
+    </span>
+  </div>
+  <div class="header_div">
+    <table style="direction: rtl;">
+      <tr>
+        <td rowspan="2" class="drop_menu">
+          <a href="{% url 'manager:account' %}">
+            <img 
+              class="profile_picture" 
+              src="/static/source/Profile_picture.jpg"
+              alt="profile_picture">
+          </a>
+        </td>
+        <td class="hidden">
+          <h2 class="_marmelad_regular regular_text_shadow">
+            {{ user.username }}
+          </h2>
+          <a href="{% url 'logout' %}"
+              class="_comforta_bold text_shadow"
+              style="float: right;">
+            Logout
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>

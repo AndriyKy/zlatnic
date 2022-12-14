@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="yellow_plate yellow_plate_init">
+    <div>
+      <table class="visible_table">
+        <thead>
+          <tr>
+            <th colspan="3">
+              <h1>
+                Cards | 
+                <a href="{% url 'manager:card-create' %}" class="text_shadow">
+                  Create
+                </a>
+              </h1>
+            </th>
+          </tr>
+          <tr>
+            <th class="visible_sell _marmalade_small text_shadow"></th>
+            <th class="visible_sell _marmalade_small text_shadow">Update</th>
+            <th class="visible_sell _marmalade_small text_shadow">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if cards_list %}
+            {% for card in cards_list %}
+              <tr>
+                <td class="visible_sell">
+                  {{ card }}
+                </td>
+                <td class="visible_sell">
+                  <a href="{% url 'manager:card-update' card.id %}">Update</a>
+                </td>
+                <td class="visible_sell">
+                  <a href="{% url 'manager:card-delete' card.id %}">Delete</a>
+                </td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td colspan=3>You don't have any cards</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <table class="visible_table">
+        <thead>
+          <tr>
+            <th colspan="3">
+              <h1>
+                Cash | 
+                <a href="{% url 'manager:cash-create' %}" class="text_shadow">
+                  Create
+                </a>
+              </h1>
+            </th>
+          </tr>
+          <tr>
+            <th class="visible_sell _marmalade_small text_shadow"></th>
+            <th class="visible_sell _marmalade_small text_shadow">Update</th>
+            <th class="visible_sell _marmalade_small text_shadow">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if cash_list %}
+            {% for cash in cash_list %}
+              <tr>
+                <td class="visible_sell">
+                  {{ cash }}
+                </td>
+                <td class="visible_sell">
+                  <a href="{% url 'manager:cash-update' cash.id %}">Update</a>
+                </td>
+                <td class="visible_sell">
+                  <a href="{% url 'manager:cash-delete' cash.id %}">Delete</a>
+                </td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td colspan=3>You don't have any cash</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <table class="visible_table">
+        <thead>
+          <tr>
+            <th colspan="3">
+              <h1>
+                Cryptocurrency | 
+                <a href="{% url 'manager:crypto-create' %}" class="text_shadow">
+                  Create
+                </a>
+              </h1>
+            </th>
+          </tr>
+          <tr>
+            <th class="visible_sell _marmalade_small text_shadow"></th>
+            <th class="visible_sell _marmalade_small text_shadow">Update</th>
+            <th class="visible_sell _marmalade_small text_shadow">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if crypto_list %}
+            {% for crypto in crypto_list %}
+              <tr>
+                <td class="visible_sell">
+                  {{ crypto }}
+                </td>
+                <td class="visible_sell">
+                  <a href="{% url 'manager:crypto-update' crypto.id %}">Update</a>
+                </td>
+                <td class="visible_sell">
+                  <a href="{% url 'manager:crypto-delete' crypto.id %}">Delete</a>
+                </td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td colspan=3>You don't have any cash</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock content %}

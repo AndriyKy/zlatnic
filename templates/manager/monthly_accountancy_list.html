@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="big_plate">
+    {% if accountancy_list %}
+      <table class="visible_table">
+        <thead>
+          <tr>
+            <th colspan="4">
+              <h1>Monthly accountancy</h1>
+            </th>
+          </tr>
+          <tr>
+            <th class="visible_sell _marmalade_small text_shadow">Wallets</th>
+            <th class="visible_sell _marmalade_small text_shadow">In/Outcomes</th>
+            <th class="visible_sell _marmalade_small text_shadow">Amount</th>
+            <th class="visible_sell _marmalade_small text_shadow">Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for acc in accountancy_list %}
+            <tr>
+              <td class="visible_sell">
+                {% if acc.card__bank_name %}
+                  <a href="{% url "manager:monthly-accountancy" "card" acc.card_id acc.month.month acc.month.year %}">
+                    {{ acc.card__bank_name }} ({{ acc.card__type }} {{ acc.card__currency__sign }})
+                  </a>
+                {% endif %}
+                {% if acc.cash__currency__name %}
+                  <a href="{% url "manager:monthly-accountancy" "cash" acc.cash_id acc.month.month acc.month.year %}">
+                    {{ acc.cash__currency__name }}
+                  </a>
+                {% endif %}
+                {% if acc.cryptocurrency__name %}
+                  <a href="{% url "manager:monthly-accountancy" "crypto" acc.cryptocurrency_id acc.month.month acc.month.year %}">
+                    {{ acc.cryptocurrency__name }}
+                  </a>
+                {% endif %}
+              </td>
+              <td class="visible_sell">{{ acc.IO }}</td>
+              <td class="visible_sell">{{ acc.amount_sum }}</td>
+              <td class="visible_sell">{{ acc.month|date:"M-Y" }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="text_alignment">
+        {% block pagination %}
+          {% include "includes/pagination.html" %}
+        {% endblock %}
+      </div>
+    {% else %}
+      <table class="visible_table">
+        <tr>
+          <td>You don't have any expenses</td>
+        </tr>
+      </table>
+    {% endif %}
+  </div>
+{% endblock content %}

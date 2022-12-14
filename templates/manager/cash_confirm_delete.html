@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="yellow_plate yellow_plate_init">
+    <div>
+      <table>
+        <tr>
+          <th>
+            <h1>Delete {{ object }}?</h1>
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <form action="" method="POST">
+              {% csrf_token %}
+              <input type="submit" value="Yes" class="button red_background text_shadow">
+              <a href="{% url 'manager:wallets' %}" class="button green_background text_shadow">No</a>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+{% endblock %}

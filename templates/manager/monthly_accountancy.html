@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="big_plate">
+    <table class="visible_table">
+      <thead>
+        <tr>
+          <th colspan="6">
+            <h1>{{ wallet_name }}</h1>
+          </th>
+        </tr>
+        <tr>
+          <th class="visible_sell _marmalade_small text_shadow">In/Outcomes</th>
+          <th class="visible_sell _marmalade_small text_shadow">Type</th>
+          <th class="visible_sell _marmalade_small text_shadow">Amount</th>
+          <th class="visible_sell _marmalade_small text_shadow">Date</th>
+          <th class="visible_sell _marmalade_small text_shadow">Update</th>
+          <th class="visible_sell _marmalade_small text_shadow">Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% if monthly_accountancy %}
+          {% for item in monthly_accountancy %}
+            <tr>
+              <td class="visible_sell">{{ item.IO }}</td>
+              <td class="visible_sell">{{ item.IO_type }}</td>
+              <td class="visible_sell">{{ item.amount }}</td>
+              <td class="visible_sell">{{ item.datetime|date:"D., d.m.Y" }}</td>
+              <td class="visible_sell">
+                <a href="{% url 'manager:accountancy-update' item.id %}">Update</a>
+              </td>
+              <td class="visible_sell">
+                <a href="{% url 'manager:accountancy-delete' item.id %}">Delete</a>
+              </td>
+            </tr>
+          {% endfor %}
+        {% else %}
+          <table class="visible_table">
+            <tr>
+              <td>You don't have any expenses</td>
+            </tr>
+          </table>
+        {% endif %}
+      </tbody>
+    </table>
+
+    <div class="text_alignment">
+      <form action="" method="GET">
+          {{ search_form.IO_type }}
+        <input type="submit" value="🔎" class="inline_button text_shadow">
+      </form>
+    </div><br>
+    <div class="text_alignment">
+      {% block pagination %}
+        {% include "includes/pagination.html" %}
+      {% endblock %}
+    </div>
+  </div>
+{% endblock content %}

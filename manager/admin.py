@@ -1,7 +1,14 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 from django.contrib.auth.admin import UserAdmin
-from .models import User, Currancy, Card, Cash, Cryptocurrency, Accountancy
+from .models import (
+    User,
+    Currency,
+    Card,
+    Cash,
+    Cryptocurrency,
+    Accountancy,
+)
 
 
 @admin.register(User)
@@ -26,34 +33,29 @@ class UserAdmin(UserAdmin):
     list_display = UserAdmin.list_display + ("phone_number",)  # type: ignore
 
 
-admin.site.register(Currancy)
+admin.site.register(Currency, ModelAdmin)
 
 
 @admin.register(Card)
 class CardAdmin(ModelAdmin):
-    list_display = ("users", "currancy", "bank_name", "type", "balance",)
+    list_display = ("user", "bank_name", "type", "balance", "currency",)
 
 
-@admin.register(Cash)
-class CashAdmin(ModelAdmin):
-    list_display = ("users", "currancy", "balance",)
+admin.site.register(Cash, ModelAdmin)
 
-
-@admin.register(Cryptocurrency)
-class CryptocurrencyAdmin(ModelAdmin):
-    list_display = ("users", "name", "balance",)
+admin.site.register(Cryptocurrency, ModelAdmin)
 
 
 @admin.register(Accountancy)
 class AccountancyAdmin(ModelAdmin):
     list_display = (
-        "users",
-        "wallet_id",
-        "wallet_type",
-        "io",
-        "io_type",
+        "card",
+        "cash",
+        "cryptocurrency",
+        "IO",
+        "IO_type",
         "amount",
         "datetime",
     )
-    search_fields = ("io_type",)
-    list_filter = ("wallet_type", "io_type")
+    search_fields = ("IO_type",)
+    list_filter = ("IO_type",)

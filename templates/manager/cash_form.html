@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
+{% block title %}<title>ZLATNIC - Cash</title>{% endblock %}
+
 {% block content %}
   <div class="yellow_plate yellow_plate_init">
-    <h1>{{ object|yesno:"Update,Create" }} cash</h1><br>
+    <h1>{{ object|yesno:"Update,Add" }} cash</h1><br>
 
     <div>
       <form action="" method="POST" novalidate>

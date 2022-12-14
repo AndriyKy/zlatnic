@@ -1,0 +1,1010 @@
+[
+  {
+    "model": "manager.currency",
+    "pk": 1,
+    "fields": {
+      "name": "Albania Lek",
+      "abbreviation": "ALL",
+      "sign": "Lek"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 2,
+    "fields": {
+      "name": "Afghanistan Afghani",
+      "abbreviation": "AFN",
+      "sign": "\u060b"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 3,
+    "fields": {
+      "name": "Argentina Peso",
+      "abbreviation": "ARS",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 4,
+    "fields": {
+      "name": "Aruba Guilder",
+      "abbreviation": "AWG",
+      "sign": "\u0192"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 5,
+    "fields": {
+      "name": "Australia Dollar",
+      "abbreviation": "AUD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 6,
+    "fields": {
+      "name": "Azerbaijan Manat",
+      "abbreviation": "AZN",
+      "sign": "\u20bc"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 7,
+    "fields": {
+      "name": "Bahamas Dollar",
+      "abbreviation": "BSD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 8,
+    "fields": {
+      "name": "Barbados Dollar",
+      "abbreviation": "BBD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 9,
+    "fields": {
+      "name": "Belarus Ruble",
+      "abbreviation": "BYN",
+      "sign": "Br"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 10,
+    "fields": {
+      "name": "Belize Dollar",
+      "abbreviation": "BZD",
+      "sign": "BZ$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 11,
+    "fields": {
+      "name": "Bermuda Dollar",
+      "abbreviation": "BMD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 12,
+    "fields": {
+      "name": "Bolivia Bol\u00edviano",
+      "abbreviation": "BOB",
+      "sign": "$b"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 13,
+    "fields": {
+      "name": "Bosnia and Herzegovina Convertible Mark",
+      "abbreviation": "BAM",
+      "sign": "KM"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 14,
+    "fields": {
+      "name": "Botswana Pula",
+      "abbreviation": "BWP",
+      "sign": "P"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 15,
+    "fields": {
+      "name": "Bulgaria Lev",
+      "abbreviation": "BGN",
+      "sign": "\u043b\u0432"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 16,
+    "fields": {
+      "name": "Brazil Real",
+      "abbreviation": "BRL",
+      "sign": "R$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 17,
+    "fields": {
+      "name": "Brunei Darussalam Dollar",
+      "abbreviation": "BND",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 18,
+    "fields": {
+      "name": "Cambodia Riel",
+      "abbreviation": "KHR",
+      "sign": "\u17db"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 19,
+    "fields": {
+      "name": "Canada Dollar",
+      "abbreviation": "CAD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 20,
+    "fields": {
+      "name": "Cayman Islands Dollar",
+      "abbreviation": "KYD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 21,
+    "fields": {
+      "name": "Chile Peso",
+      "abbreviation": "CLP",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 22,
+    "fields": {
+      "name": "China Yuan Renminbi",
+      "abbreviation": "CNY",
+      "sign": "\u00a5"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 23,
+    "fields": {
+      "name": "Colombia Peso",
+      "abbreviation": "COP",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 24,
+    "fields": {
+      "name": "Costa Rica Colon",
+      "abbreviation": "CRC",
+      "sign": "\u20a1"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 25,
+    "fields": {
+      "name": "Croatia Kuna",
+      "abbreviation": "HRK",
+      "sign": "kn"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 26,
+    "fields": {
+      "name": "Cuba Peso",
+      "abbreviation": "CUP",
+      "sign": "\u20b1"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 27,
+    "fields": {
+      "name": "Czech Republic Koruna",
+      "abbreviation": "CZK",
+      "sign": "K\u010d"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 28,
+    "fields": {
+      "name": "Denmark Krone",
+      "abbreviation": "DKK",
+      "sign": "kr"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 29,
+    "fields": {
+      "name": "Dominican Republic Peso",
+      "abbreviation": "DOP",
+      "sign": "RD$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 30,
+    "fields": {
+      "name": "East Caribbean Dollar",
+      "abbreviation": "XCD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 31,
+    "fields": {
+      "name": "Egypt Pound",
+      "abbreviation": "EGP",
+      "sign": "\u00a3"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 32,
+    "fields": {
+      "name": "El Salvador Colon",
+      "abbreviation": "SVC",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 33,
+    "fields": {
+      "name": "Euro Member Countries",
+      "abbreviation": "EUR",
+      "sign": "\u20ac"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 34,
+    "fields": {
+      "name": "Falkland Islands (Malvinas) Pound",
+      "abbreviation": "FKP",
+      "sign": "\u00a3"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 35,
+    "fields": {
+      "name": "Fiji Dollar",
+      "abbreviation": "FJD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 36,
+    "fields": {
+      "name": "Ghana Cedi",
+      "abbreviation": "GHS",
+      "sign": "\u00a2"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 37,
+    "fields": {
+      "name": "Gibraltar Pound",
+      "abbreviation": "GIP",
+      "sign": "\u00a3"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 38,
+    "fields": {
+      "name": "Guatemala Quetzal",
+      "abbreviation": "GTQ",
+      "sign": "Q"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 39,
+    "fields": {
+      "name": "Guernsey Pound",
+      "abbreviation": "GGP",
+      "sign": "\u00a3"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 40,
+    "fields": {
+      "name": "Guyana Dollar",
+      "abbreviation": "GYD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 41,
+    "fields": {
+      "name": "Honduras Lempira",
+      "abbreviation": "HNL",
+      "sign": "L"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 42,
+    "fields": {
+      "name": "Hong Kong Dollar",
+      "abbreviation": "HKD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 43,
+    "fields": {
+      "name": "Hungary Forint",
+      "abbreviation": "HUF",
+      "sign": "Ft"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 44,
+    "fields": {
+      "name": "Iceland Krona",
+      "abbreviation": "ISK",
+      "sign": "kr"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 45,
+    "fields": {
+      "name": "India Rupee",
+      "abbreviation": "INR",
+      "sign": "\u20b9"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 46,
+    "fields": {
+      "name": "Indonesia Rupiah",
+      "abbreviation": "IDR",
+      "sign": "Rp"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 47,
+    "fields": {
+      "name": "Iran Rial",
+      "abbreviation": "IRR",
+      "sign": "\ufdfc"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 48,
+    "fields": {
+      "name": "Isle of Man Pound",
+      "abbreviation": "IMP",
+      "sign": "\u00a3"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 49,
+    "fields": {
+      "name": "Israel Shekel",
+      "abbreviation": "ILS",
+      "sign": "\u20aa"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 50,
+    "fields": {
+      "name": "Jamaica Dollar",
+      "abbreviation": "JMD",
+      "sign": "J$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 51,
+    "fields": {
+      "name": "Japan Yen",
+      "abbreviation": "JPY",
+      "sign": "\u00a5"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 52,
+    "fields": {
+      "name": "Jersey Pound",
+      "abbreviation": "JEP",
+      "sign": "\u00a3"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 53,
+    "fields": {
+      "name": "Kazakhstan Tenge",
+      "abbreviation": "KZT",
+      "sign": "\u043b\u0432"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 54,
+    "fields": {
+      "name": "Korea (North) Won",
+      "abbreviation": "KPW",
+      "sign": "\u20a9"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 55,
+    "fields": {
+      "name": "Korea (South) Won",
+      "abbreviation": "KRW",
+      "sign": "\u20a9"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 56,
+    "fields": {
+      "name": "Kyrgyzstan Som",
+      "abbreviation": "KGS",
+      "sign": "\u043b\u0432"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 57,
+    "fields": {
+      "name": "Laos Kip",
+      "abbreviation": "LAK",
+      "sign": "\u20ad"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 58,
+    "fields": {
+      "name": "Lebanon Pound",
+      "abbreviation": "LBP",
+      "sign": "\u00a3"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 59,
+    "fields": {
+      "name": "Liberia Dollar",
+      "abbreviation": "LRD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 60,
+    "fields": {
+      "name": "Macedonia Denar",
+      "abbreviation": "MKD",
+      "sign": "\u0434\u0435\u043d"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 61,
+    "fields": {
+      "name": "Malaysia Ringgit",
+      "abbreviation": "MYR",
+      "sign": "RM"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 62,
+    "fields": {
+      "name": "Mauritius Rupee",
+      "abbreviation": "MUR",
+      "sign": "\u20a8"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 63,
+    "fields": {
+      "name": "Mexico Peso",
+      "abbreviation": "MXN",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 64,
+    "fields": {
+      "name": "Mongolia Tughrik",
+      "abbreviation": "MNT",
+      "sign": "\u20ae"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 65,
+    "fields": {
+      "name": "Moroccan-dirham",
+      "abbreviation": "MNT",
+      "sign": "\u062f.\u0625"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 66,
+    "fields": {
+      "name": "Mozambique Metical",
+      "abbreviation": "MZN",
+      "sign": "MT"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 67,
+    "fields": {
+      "name": "Namibia Dollar",
+      "abbreviation": "NAD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 68,
+    "fields": {
+      "name": "Nepal Rupee",
+      "abbreviation": "NPR",
+      "sign": "\u20a8"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 69,
+    "fields": {
+      "name": "Netherlands Antilles Guilder",
+      "abbreviation": "ANG",
+      "sign": "\u0192"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 70,
+    "fields": {
+      "name": "New Zealand Dollar",
+      "abbreviation": "NZD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 71,
+    "fields": {
+      "name": "Nicaragua Cordoba",
+      "abbreviation": "NIO",
+      "sign": "C$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 72,
+    "fields": {
+      "name": "Nigeria Naira",
+      "abbreviation": "NGN",
+      "sign": "\u20a6"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 73,
+    "fields": {
+      "name": "Norway Krone",
+      "abbreviation": "NOK",
+      "sign": "kr"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 74,
+    "fields": {
+      "name": "Oman Rial",
+      "abbreviation": "OMR",
+      "sign": "\ufdfc"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 75,
+    "fields": {
+      "name": "Pakistan Rupee",
+      "abbreviation": "PKR",
+      "sign": "\u20a8"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 76,
+    "fields": {
+      "name": "Panama Balboa",
+      "abbreviation": "PAB",
+      "sign": "B/."
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 77,
+    "fields": {
+      "name": "Paraguay Guarani",
+      "abbreviation": "PYG",
+      "sign": "Gs"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 78,
+    "fields": {
+      "name": "Peru Sol",
+      "abbreviation": "PEN",
+      "sign": "S/."
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 79,
+    "fields": {
+      "name": "Philippines Peso",
+      "abbreviation": "PHP",
+      "sign": "\u20b1"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 80,
+    "fields": {
+      "name": "Poland Zloty",
+      "abbreviation": "PLN",
+      "sign": "z\u0142"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 81,
+    "fields": {
+      "name": "Qatar Riyal",
+      "abbreviation": "QAR",
+      "sign": "\ufdfc"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 82,
+    "fields": {
+      "name": "Romania Leu",
+      "abbreviation": "RON",
+      "sign": "lei"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 83,
+    "fields": {
+      "name": "Russia Ruble",
+      "abbreviation": "RUB",
+      "sign": "\u20bd"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 84,
+    "fields": {
+      "name": "Saint Helena Pound",
+      "abbreviation": "SHP",
+      "sign": "\u00a3"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 85,
+    "fields": {
+      "name": "Saudi Arabia Riyal",
+      "abbreviation": "SAR",
+      "sign": "\ufdfc"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 86,
+    "fields": {
+      "name": "Serbia Dinar",
+      "abbreviation": "RSD",
+      "sign": "\u0414\u0438\u043d."
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 87,
+    "fields": {
+      "name": "Seychelles Rupee",
+      "abbreviation": "SCR",
+      "sign": "\u20a8"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 88,
+    "fields": {
+      "name": "Singapore Dollar",
+      "abbreviation": "SGD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 89,
+    "fields": {
+      "name": "Solomon Islands Dollar",
+      "abbreviation": "SBD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 90,
+    "fields": {
+      "name": "Somalia Shilling",
+      "abbreviation": "SOS",
+      "sign": "S"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 91,
+    "fields": {
+      "name": "South Korean Won",
+      "abbreviation": "KRW",
+      "sign": "\u20a9"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 92,
+    "fields": {
+      "name": "South Africa Rand",
+      "abbreviation": "ZAR",
+      "sign": "R"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 93,
+    "fields": {
+      "name": "Sri Lanka Rupee",
+      "abbreviation": "LKR",
+      "sign": "\u20a8"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 94,
+    "fields": {
+      "name": "Sweden Krona",
+      "abbreviation": "SEK",
+      "sign": "kr"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 95,
+    "fields": {
+      "name": "Switzerland Franc",
+      "abbreviation": "CHF",
+      "sign": "CHF"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 96,
+    "fields": {
+      "name": "Suriname Dollar",
+      "abbreviation": "SRD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 97,
+    "fields": {
+      "name": "Syria Pound",
+      "abbreviation": "SYP",
+      "sign": "\u00a3"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 98,
+    "fields": {
+      "name": "Taiwan New Dollar",
+      "abbreviation": "TWD",
+      "sign": "NT$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 99,
+    "fields": {
+      "name": "Thailand Baht",
+      "abbreviation": "THB",
+      "sign": "\u0e3f"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 100,
+    "fields": {
+      "name": "Trinidad and Tobago Dollar",
+      "abbreviation": "TTD",
+      "sign": "TT$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 101,
+    "fields": {
+      "name": "Turkey Lira",
+      "abbreviation": "TRY",
+      "sign": "\u20ba"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 102,
+    "fields": {
+      "name": "Tuvalu Dollar",
+      "abbreviation": "TVD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 103,
+    "fields": {
+      "name": "Ukraine Hryvnia",
+      "abbreviation": "UAH",
+      "sign": "\u20b4"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 104,
+    "fields": {
+      "name": "UAE-Dirham",
+      "abbreviation": "AED",
+      "sign": "\u062f.\u0625"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 105,
+    "fields": {
+      "name": "United Kingdom Pound",
+      "abbreviation": "GBP",
+      "sign": "\u00a3"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 106,
+    "fields": {
+      "name": "United States Dollar",
+      "abbreviation": "USD",
+      "sign": "$"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 107,
+    "fields": {
+      "name": "Uruguay Peso",
+      "abbreviation": "UYU",
+      "sign": "$U"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 108,
+    "fields": {
+      "name": "Uzbekistan Som",
+      "abbreviation": "UZS",
+      "sign": "\u043b\u0432"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 109,
+    "fields": {
+      "name": "Venezuela Bol\u00edvar",
+      "abbreviation": "VEF",
+      "sign": "Bs"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 110,
+    "fields": {
+      "name": "Viet Nam Dong",
+      "abbreviation": "VND",
+      "sign": "\u20ab"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 111,
+    "fields": {
+      "name": "Yemen Rial",
+      "abbreviation": "YER",
+      "sign": "\ufdfc"
+    }
+  },
+  {
+    "model": "manager.currency",
+    "pk": 112,
+    "fields": {
+      "name": "Zimbabwe Dollar",
+      "abbreviation": "ZWD",
+      "sign": "Z$"
+    }
+  }
+]

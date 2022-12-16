@@ -1,15 +1,35 @@
+<img src="static/source/welcome_logo.png" alt="Project logo" width="200">
+
 # ZLATNIC
-Zlatnic - a 
+ZLATNIC - a platform to control personal expenses.
+
+## Check it out
+
+[Zlatnic project deployed on Render](LINK)
 
 The project is built on a database with the following structure:
 ![image](static/source/DB_Zlatnic.png)
 
-To install the necessary dependencies, you need to create a virtual environment, after which, in the terminal, execute the following command:
+## Installation
 
-`pip install -r requirements.txt`
+Python3 must be already installed.
 
-Use the following command to load the required data:
+```shell
+git clone https://github.com/AndriyKy/zlatnic.git
+cd zlatnic
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python3 manage.py loaddata taxi_service_db_data.json
+python3 manage.py surserver   # start Django server
+```
 
-`python manage.py loaddata taxi_service_db_data.json`
+## Features
 
-That's it, you can use it!
+* Registration and authentication functionality for User
+* Managing different types of wallets
+* Functionality of accrual and expenditure of funds
+* Monthly and monthly detailed history of financial circulation
+* Powerful admin panel for advanced managing
+
+

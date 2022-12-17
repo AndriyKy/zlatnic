@@ -20,7 +20,7 @@ cd zlatnic
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-python3 manage.py loaddata taxi_service_db_data.json
+python3 manage.py loaddata zlatnic_db_data.json
 python3 manage.py surserver   # start Django server
 ```
 

@@ -39,11 +39,6 @@ class Card(models.Model):
         self.balance = round(self.balance, 2)
         return super(Card, self).save(*args, **kwargs)
 
-    def clean(self) -> None:
-        if self.balance:
-            self.balance = round(self.balance, 2)
-        return super().clean()
-
     class Meta:
         ordering = ["bank_name"]
         constraints = [
@@ -105,7 +100,7 @@ class Cryptocurrency(models.Model):
     )
     name = models.CharField(max_length=50)
     balance = models.DecimalField(
-        max_digits=1_000_000,
+        max_digits=20,
         decimal_places=8,
         default=Decimal(0.0)
     )

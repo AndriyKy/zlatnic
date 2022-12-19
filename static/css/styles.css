@@ -16,12 +16,12 @@
   --small-radius: 5px;
   --average-radius: 15px;
   --big-radius: 20px;
-  /* border: 1px solid black; */
+   /*border: 1px solid black;*/
 }
 
 /* Works on Firefox */
 * {
-  scrollbar-width: thin;
+  scrollbar-width: auto;
   scrollbar-color: var(--main-orange) var(--coffee-foam);
 }
 

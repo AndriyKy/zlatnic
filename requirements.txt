@@ -21,6 +21,7 @@ dulwich==0.20.46
 EditorConfig==0.12.3
 filelock==3.8.0
 flake8==6.0.0
+gunicorn==20.1.0
 html-tag-names==0.1.2
 html-void-elements==0.1.0
 html5lib==1.1

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}<title>ZLATNIC - Registration</title>{% endblock %}
+
+{% block header %}{% endblock header %}
+
+{% block content %}
+  <div class="log_body">
+    
+    {% include "includes/welcome_info.html" %}
+
+    <form method="POST" class="registration big_black_plate fit_content">
+      {% csrf_token %}
+      
+      <h1 style="padding-left: 34px;" class="regular_text_shadow">
+        Registration
+      </h1>
+
+      {% if messages %}
+        <div class="error_message">
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+          <br><br>
+          {% if form.error_messages %}
+            {% for error_message in form.error_messages.values %}
+              - {{ error_message }}
+            {% endfor %}
+          {% endif %}
+        </div>
+      {% endif %}
+      
+      <div class="big_plate">
+        <input type="text" placeholder="First name" name="first_name" maxlength="150" autofocus id="id_first_name" class="input_data">
+      </div>
+      <div class="big_plate">
+        <input type="text" placeholder="Last name" name="last_name" maxlength="150" id="id_last_name" class="input_data">
+      </div>
+      <div class="big_plate">
+        <input type="text" placeholder="Username" name="username" maxlength="150" required="" id="id_username" class="input_data">
+      </div>
+      <span class="yellow_plate yellow_plate_init text_shadow">
+        Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+      </span>
+      <div class="big_plate">
+        <input type="email" placeholder="Email" name="email" required="" id="id_email" class="input_data">
+      </div>
+      <div class="big_plate">
+        <input type="password" placeholder="Password" name="password1" autocomplete="new-password" required="" id="id_password1" aria-autocomplete="list" class="input_data">
+      </div>
+      <span class="yellow_plate yellow_plate_init text_shadow">
+        <ul>
+          <li>- Your password can’t be too similar to your other personal information.</li>
+          <li>- Your password must contain at least 8 characters.</li>
+          <li>- Your password can’t be a commonly used password.</li>
+          <li>- Your password can’t be entirely numeric.</li>
+        </ul>
+      </span>
+      <div class="big_plate">
+        <input type="password" placeholder="Password confirmation" name="password2" autocomplete="new-password" required="" id="id_password2" class="input_data">
+      </div>
+      <div class="big_plate">
+        <input type="tel" placeholder="Phone number" name="phone_number" maxlength="128" id="id_phone_number" class="input_data">
+      </div>
+
+      <div class="big_plate">
+        If you already have an account,
+        <a href="{% url 'login' %}" class="text_shadow">
+          login!
+        </a>
+      </div>
+
+      <input type="submit" value="Sign up" class="button orange_background text_shadow">
+      <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+  </div>
+{% endblock content %}
+
+{% block menu %}{% endblock menu %}
+
+{% block footer %}{% endblock footer %}

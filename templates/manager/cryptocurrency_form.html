@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}<title>ZLATNIC - Cryptocurrency</title>{% endblock %}
+
+{% block content %}
+  <div class="yellow_plate yellow_plate_init">
+    <h1>{{ object|yesno:"Update,Add" }} cash</h1><br>
+
+    <div>
+      <form action="" method="POST" novalidate>
+        {% if form.non_field_errors %}
+          <div class="error_message">
+            {{ form.non_field_errors }}
+          </div>
+        {% endif %}
+        
+        {% csrf_token %}
+        <input type="hidden" name="user" value="{{ user.id }}">
+        <input type="hidden" name="balance" value="0.0" step="any" required="" id="id_balance">
+        <label for="id_name" class="_marmalade_small text_shadow">Name:</label><br>
+        <input type="text"
+               name="name"
+               value="{{ object.name }}"
+               maxlength="50"
+               required=""
+               id="id_name"
+               class="small_plate _comforta_bold text_shadow"><br><br>
+
+        <input type="submit" value="Submit" class="button orange_background text_shadow">
+        <a href="{% url 'manager:wallets' %}" class="button orange_background text_shadow">Cancel</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}

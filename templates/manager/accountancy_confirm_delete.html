@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}<title>ZLATNIC - Delete record</title>{% endblock %}
+
+{% block content %}
+  <div class="big_plate">
+    <table>
+      <tr>
+        <td>
+          <h1>Delete record?</h1>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <form action="" method="POST">
+            {% csrf_token %}
+
+            <input type="submit" value="Yes" class="button red_background text_shadow">
+            <a href="{% url 'manager:monthly-accountancy-list' %}" class="button green_background text_shadow">No</a>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </div>
+{% endblock %}

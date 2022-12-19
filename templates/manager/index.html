@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load query_transform %}
+
+{% block content %}
+  <form method="POST" id="expenses_form">
+    <section class="top_section">
+      <div class="expenses_buttons big_plate">
+        <input type="submit" name="Outcome" value="Home" title="Home" class="expenses home">
+        <input type="submit" name="Outcome" value="Utilities" title="Utilities" class="expenses utilities">
+        <input type="submit" name="Outcome" value="Food" title="Food" class="expenses food">
+        <input type="submit" name="Outcome" value="Pets" title="Pets" class="expenses pets">
+        <input type="submit" name="Outcome" value="Health" title="Health" class="expenses health">
+        <input type="submit" name="Outcome" value="Transport" title="Transport" class="expenses transport">
+        <input type="submit" name="Outcome" value="Clothes" title="Clothes" class="expenses clothes">
+      </div>
+      <div class="expenses_div">
+        <form method="POST">
+          {% csrf_token %}
+          <select name="wallet_choice" class="small_plate wallet_select _comforta_bold text_shadow">
+            {% for type, wallet in wallets %}
+              <option value="{{ type }}">{{ wallet }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit" class="text_shadow inline_button">ﰇ</button>
+        </form>
+
+        <div class="yellow_plate">
+          {% if error %}
+            <div class="error_message">
+              {{ error.message }}
+            </div>
+          {% endif %}
+          <table class="_comforta_regular text_shadow">
+            <tr>
+              <th colspan="3">
+                BALANCE - {{ current_balance }}
+              </th>
+            </tr>
+            <tr style="line-height: 65px;">
+              <td style="color: green;">{{ Income }}</td>
+              <td class="big_marmelad">vs</td>
+              <td style="color: red;">{{ Outcome }}</td>
+            </tr>
+            <tr>  
+              <td colspan="3">
+                <input type="number" min="0.00000001" step="0.00000001" name="amount" class="small_plate _comforta_bold text_shadow">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <div class="income_div">
+                  <input type="submit" value="" title="Deposit money" class="income_btn">
+                  <select name="Income" class="small_plate _comforta_bold text_shadow">
+                    <option value="none">------------</option>
+                    <option value="Salary">Salary</option>
+                    <option value="One-time">One-time</option>
+                    <option value="Assets">Assets</option>
+                    <option value="Passives">Passives</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      
+      <div class="expenses_buttons big_plate">
+        <input type="submit" name="Outcome" value="Household goods" title="Household goods"  class="expenses household_goods">
+        <input type="submit" name="Outcome" value="Study" title="Study" class="expenses study">
+        <input type="submit" name="Outcome" value="Communication" title="Communication" class="expenses communication">
+        <input type="submit" name="Outcome" value="Leisure" title="Leisure" class="expenses leisure">
+        <input type="submit" name="Outcome" value="Charity" title="Charity" class="expenses charity">
+        <input type="submit" name="Outcome" value="Savings" title="Savings" class="expenses savings">
+        <input type="submit" name="Outcome" value="Other" title="Other" class="expenses other">
+      </div>
+    </section>
+  </form>
+
+  <section class="big_black_plate">
+    <div class="infobox">
+      <table>
+        <tr>
+          <td rowspan="2" style="width: 120px;">
+            <img 
+              src="/static/infobox_media/The_richest_man_in_Babylon.png"
+              alt="The Richest Man in Babylon"
+              style="width: auto; height: 170px;">
+          </td>
+          <td>
+            <a class="_marmalade_small regular_text_shadow" href="https://uk.wikipedia.org/wiki/%D0%9D%D0%B0%D0%B9%D0%B1%D0%B0%D0%B3%D0%B0%D1%82%D1%88%D0%B0_%D0%BB%D1%8E%D0%B4%D0%B8%D0%BD%D0%B0_%D1%83_%D0%92%D0%B0%D0%B2%D0%B8%D0%BB%D0%BE%D0%BD%D1%96">
+              The richest man in Babylon
+            </a>
+          </td>
+        </tr>
+        <tr class="_comforta_bold_small text_shadow" style="text-align: left;">
+          <td>
+            George Samuel Clayson's book,
+            in which he gives financial advice,
+            a collection of proverbs
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="infobox">
+      <table>
+        <tr>
+          <td>
+            <img
+              src="/static/infobox_media/FinMen_curce.jpg"
+              alt="Financial management"
+              style="width: 230px; height: 62px; filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.3));">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a class="_marmalade_small regular_text_shadow" href="https://courses.prometheus.org.ua/courses/NAUKMA/101/2014_T2/about">
+              PROMETHEUS "Financial Management" course
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td class="_comforta_bold_small text_shadow" style="text-align: justify;">
+            Why some countries, companies or people become financially successful,
+            and others not? What are the general principles of financial management,
+            which determine success? What should be considered when having a business idea?
+            What are the most modern trends in the development of finance?
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="infobox">
+      <table>
+        <tr>
+          <td rowspan="2" style="width: 120px;">
+            <img 
+              src="/static/infobox_media/Family_budget.jpg"
+              alt="TThe Richest Man in Babylon" 
+              style="width: auto; height: 180px; filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.3));">
+          </td>
+          <td>
+            <a class="_marmalade_small regular_text_shadow" href="https://www.youtube.com/channel/UCFcnbBzej0nGa-uBbROmOnw">
+              Family budget (YouTube channel)
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td class="_comforta_bold_small text_shadow" style="text-align: left;">
+            Useful videos for Ukrainians,
+            who want to buy a home,
+            save for a private pension
+            and give good education to children.
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="infobox">
+      <table>
+        <tr>
+          <td>
+            <img
+              src="/static/infobox_media/FinAnalysis_online_curce.png"
+              alt="Financial management"
+              style="width: 230px; height: 62px; filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.3));">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a class="_marmalade_small regular_text_shadow" href="https://l-a-b-a.com/uk/lecture/1634-finansovyi-analiz?utm_source=google&utm_medium=cpc&utm_campaign=kibenko_finan_1634ua&utm_content=search&utm_term=%D1%84%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%20%D0%BE%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5&gclid=Cj0KCQjwuaiXBhCCARIsAKZLt3k9qfb54n62Ir_HTLwZ_SeNBSiTJrX9yw0w9BBGQmCJhxTP4-uziS4aAivGEALw_wcB">
+              Financial analysis
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td class="_comforta_bold_small text_shadow" style="text-align: justify;">
+            Why some countries, companies or people become financially successful,
+            and others not? What are the general principles of financial management,
+            which determine success? What should be considered when having a business idea?
+            What are the most modern trends in the development of finance?
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+{% endblock content %}

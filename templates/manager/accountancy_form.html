@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}<title>ZLATNIC - Update record</title>{% endblock %}
+
+{% block content %}
+  <div class="yellow_plate yellow_plate_init">
+    <h1>
+      Update entry:
+      {% if accountancy.card %}{{ accountancy.card }}{% endif %}
+      {% if accountancy.cash %}{{ accountancy.cash }}{% endif %}
+      {% if accountancy.cryptocurrency %}{{ accountancy.cryptocurrency }}{% endif %}
+    </h1><br>
+
+    <form action="" method="POST" novalidate>
+      {% if form.non_field_errors %}
+        <div class="error_message">
+          {{ form.non_field_errors }}
+        </div>
+      {% endif %}
+      
+      {% csrf_token %}
+      <label for="id_amount" class="_marmalade_small text_shadow">Amount:</label>
+      <input type="number" 
+              name="amount"
+              value="{{ accountancy.amount }}"
+              step="0.00000001"
+              required="" 
+              id="id_amount"
+              class="small_plate _comforta_bold text_shadow">
+      <input type="hidden"
+            name="wallet_choice"
+            value="{% if accountancy.card %}card{% elif accountancy.cash %}cash{% else %}crypto{% endif %} - {{ accountancy.amount }}">
+      <br><br>
+
+      <input type="submit" value="Submit" class="button orange_background text_shadow">
+      <a href="{% url 'manager:monthly-accountancy-list' %}" class="button orange_background text_shadow">Cancel</a>
+  </div>
+{% endblock %}

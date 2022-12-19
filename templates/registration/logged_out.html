@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}<title>ZLATNIC - Logout</title>{% endblock %}
+
+{% block header %}{% endblock header %}
+
+{% block content %}
+  <div class="log_body">
+      
+    {% include "includes/welcome_info.html" %}
+
+    <div class="registration big_plate yellow_plate_init fit_content">
+      <h1>Logged out!</h1><br>
+      <a href="{% url 'login' %}">
+        Click here to login again.
+      </a>
+    </div>
+  </div>
+{% endblock %}
+
+{% block menu %}{% endblock menu %}
+
+{% block footer %}{% endblock footer %}

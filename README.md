@@ -5,7 +5,7 @@ ZLATNIC - a platform to control personal expenses.
 
 ## Check it out
 
-[Zlatnic project deployed on Render](LINK)
+[Zlatnic project deployed on Render](https://zlatnic.onrender.com/)
 
 The project is built on a database with the following structure:
 ![image](static/source/DB_Zlatnic.png)

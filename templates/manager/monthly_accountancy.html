@@ -50,13 +50,15 @@
     <div class="text_alignment">
       <form action="" method="GET">
           {{ search_form.IO_type }}
-        <input type="submit" value="🔎" class="inline_button text_shadow">
+        <input type="submit" value="🔎" class="inline_button inline_button_search text_shadow">
       </form>
     </div><br>
-    <div class="text_alignment">
-      {% block pagination %}
-        {% include "includes/pagination.html" %}
-      {% endblock %}
-    </div>
+    {% if is_paginated %}
+      <div class="text_alignment">
+        {% block pagination %}
+          {% include "includes/pagination.html" %}
+        {% endblock %}
+      </div>
+    {% endif %}
   </div>
 {% endblock content %}

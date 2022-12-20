@@ -13,7 +13,9 @@
             </th>
           </tr>
           <tr>
-            <th class="visible_sell _marmalade_small text_shadow">Wallets</th>
+            <th class="visible_sell _marmalade_small text_shadow">
+              Wallets <abbr title="Click on the wallet to see the monthly financial turnover">💡</abbr>
+            </th>
             <th class="visible_sell _marmalade_small text_shadow">In/Outcomes</th>
             <th class="visible_sell _marmalade_small text_shadow">Amount</th>
             <th class="visible_sell _marmalade_small text_shadow">Date</th>
@@ -47,11 +49,13 @@
           {% endfor %}
         </tbody>
       </table>
-      <div class="text_alignment">
-        {% block pagination %}
-          {% include "includes/pagination.html" %}
-        {% endblock %}
-      </div>
+      {% if is_paginated %}
+        <div class="text_alignment">
+          {% block pagination %}
+            {% include "includes/pagination.html" %}
+          {% endblock %}
+        </div>
+      {% endif %}
     {% else %}
       <table class="visible_table">
         <tr>

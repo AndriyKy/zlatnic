@@ -348,6 +348,7 @@ poetry.toml
 
 ### VisualStudioCode ###
 .vscode/*
+.vscode/settings.json
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -366,3 +367,4 @@ poetry.toml
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/python,django,pycharm+all,visualstudiocode
+/.vscode/settings.json

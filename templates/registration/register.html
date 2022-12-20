@@ -40,7 +40,8 @@
         <input type="text" placeholder="Username" name="username" maxlength="150" required="" id="id_username" class="input_data">
       </div>
       <span class="yellow_plate yellow_plate_init text_shadow">
-        Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+        Pay attention! <br><br>
+        150 characters or fewer. Letters, digits and / @ / . / + / - / _ / only.
       </span>
       <div class="big_plate">
         <input type="email" placeholder="Email" name="email" required="" id="id_email" class="input_data">
@@ -50,10 +51,12 @@
       </div>
       <span class="yellow_plate yellow_plate_init text_shadow">
         <ul>
-          <li>- Your password can’t be too similar to your other personal information.</li>
-          <li>- Your password must contain at least 8 characters.</li>
-          <li>- Your password can’t be a commonly used password.</li>
-          <li>- Your password can’t be entirely numeric.</li>
+          <li>Pay attention!</li><br>
+          <li>Your password:</li>
+          <li>- can’t be too similar to your other personal information;</li>
+          <li>- must contain at least 8 characters;</li>
+          <li>- can’t be a commonly used password;</li>
+          <li>- can’t be entirely numeric.</li>
         </ul>
       </span>
       <div class="big_plate">
@@ -65,9 +68,7 @@
 
       <div class="big_plate">
         If you already have an account,
-        <a href="{% url 'login' %}" class="text_shadow">
-          login!
-        </a>
+        <a href="{% url 'login' %}">login!</a>
       </div>
 
       <input type="submit" value="Sign up" class="button orange_background text_shadow">

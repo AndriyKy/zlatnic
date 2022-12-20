@@ -34,15 +34,14 @@
     {% endblock header %}
 
     {% block content %}{% endblock content %}
-
-    {% block footer %}
-      {% include "includes/footer.html" %}
-    {% endblock footer %}
-
-    {% block menu %}
-      {% include "includes/menu.html" %}
-    {% endblock menu %}
   </div>
+  {% block footer %}
+    {% include "includes/footer.html" %}
+  {% endblock footer %}
+
+  {% block menu %}
+    {% include "includes/menu.html" %}
+  {% endblock menu %}
 </body>
 
 </html>

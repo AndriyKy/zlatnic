@@ -16,7 +16,6 @@
   --small-radius: 5px;
   --average-radius: 15px;
   --big-radius: 20px;
-   /*border: 1px solid black;*/
 }
 
 /* Works on Firefox */
@@ -40,12 +39,23 @@
   border: 3px solid var(--coffee-foam);
 }
 
-a {
+abbr {
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:link {
   color: inherit;
+  font-weight: bold;
   text-decoration-style: dotted;
   text-decoration-color: var(--main-orange);
 }
-
+a:visited {
+  color: inherit;
+  font-weight: bold;
+  text-decoration-color: var(--main-red);
+}
 a:hover {
   text-decoration-style: solid;
 }
@@ -54,22 +64,23 @@ img {
   vertical-align: middle;
 }
 
-ul,
-ol,
-li {
-  list-style: none;
-}
-
 html,
 body {
   font-family: Comfortaa, serif;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
+  min-height: 100vh;
   line-height: 17px;
   letter-spacing: -0.025em;
   color: white;
   background: url("/static/source/Money_background_1440x1650.png");
   background-size: 1350px 1650px;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
 }
 
 h1, .big_marmelad {
@@ -100,7 +111,6 @@ input {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  /* width: fit-content; */
 }
 
 .red_background {
@@ -202,6 +212,7 @@ input {
 
 .big_plate {
   color: var(--main-black);
+  overflow: auto;
   background-color: var(--coffee-foam);
   border: var(--main-border) white;
   border-radius: var(--average-radius);
@@ -222,7 +233,7 @@ input {
 }
 
 .wrapper {
-  min-height: 100vh;
+  min-height: 67vh;
   max-width: var(--main-max-width);
   margin: 0 auto;
 }
@@ -257,9 +268,8 @@ input {
 .logo {
   position: relative;
   top: 10px;
-  left: 20px;
-  width: 95px;
-  height: 100px;
+  width: 90px;
+  height: 95px;
   z-index: -1;
 }
 
@@ -398,7 +408,7 @@ input {
 }
 
 .wallet_select {
-  width: 325px;
+  max-width: 325px;
   border: solid white;
   border-width: 2px 0 1px 2px;
   border-start-start-radius: var(--average-radius);
@@ -419,6 +429,15 @@ input {
     inset -2px 5px 10px rgba(107, 109, 30, 0.25),
     inset 0 -10px 10px var(--main-orange);
   cursor: pointer;
+}
+
+.inline_button_search {
+  margin-inline: 5px;
+  border-width: 2px;
+  border-radius: var(--small-radius);
+  box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.15),
+    inset -2px 5px 10px rgba(107, 109, 30, 0.25),
+    inset 0 -10px 10px var(--main-orange);
 }
 
 .income_div {
@@ -483,6 +502,7 @@ input {
   position: sticky;
   display: flex;
   width: fit-content;
+  width: -moz-fit-content;
   bottom: 0;
   z-index: 1;
   height: 80px;
@@ -495,6 +515,8 @@ input {
 /* Footer styling */
 footer {
   display: flex;
+  max-width: var(--main-max-width);
+  bottom: 80px;
   min-height: 100px;
 }
 
@@ -513,7 +535,7 @@ footer {
 }
 
 .welcome_info {
-  width: 400px;
+  max-width: 400px;
   margin: auto;
   padding: 20px;
 }
@@ -529,7 +551,7 @@ footer {
 
 .registration {
   display: block;
-  width: 400px;
+  max-width: 400px;
 }
 
 .input_data {

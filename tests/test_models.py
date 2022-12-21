@@ -66,7 +66,8 @@ class ModelsTest(TestCase):
     def test_cash_str(self):
         self.assertEqual(
             str(self.cash),
-            f"Cash - {self.cash.balance} {self.cash.currency.sign}"
+            f"Cash - {self.cash.balance} {self.cash.currency.sign} "
+            f"({self.currency.abbreviation})"
         )
 
     def test_cash_clean(self):

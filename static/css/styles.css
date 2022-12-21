@@ -107,6 +107,10 @@ input {
   padding-inline: 3px;
 }
 
+.no-decoration {
+  text-decoration: none;
+}
+
 .form {
   display: flex;
   flex-wrap: wrap;
@@ -501,11 +505,12 @@ input {
 .menu {
   position: sticky;
   display: flex;
+  margin: 0 auto;
   width: fit-content;
   width: -moz-fit-content;
+  height: 80px;
   bottom: 0;
   z-index: 1;
-  height: 80px;
 }
 .menu_buttons {
   margin-inline: 10px;

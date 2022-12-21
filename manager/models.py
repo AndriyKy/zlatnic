@@ -89,7 +89,8 @@ class Cash(models.Model):
         ]
 
     def __str__(self) -> str:
-        return f"Cash - {self.balance} {self.currency.sign}"
+        return f"Cash - {self.balance} {self.currency.sign} "\
+               f"({self.currency.abbreviation})"
 
 
 class Cryptocurrency(models.Model):

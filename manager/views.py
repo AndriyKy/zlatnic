@@ -2,7 +2,6 @@ from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q, Sum
 from django.db.models.functions import TruncMonth, Round
 from django.shortcuts import render, redirect
@@ -248,59 +247,43 @@ class MonthlyAccountancyList(LoginRequiredMixin, generic.ListView):
         return self.queryset
 
 
-@login_required
-def monthly_accountancy(request, wallet, wallet_id, month, year):
-    q_filter, wallet_obj = wallet_choice(wallet, wallet_id)
+class MonthlyAccountancy(LoginRequiredMixin, generic.ListView):
+    model = Accountancy
+    template_name = "manager/monthly_accountancy.html"
+    paginate_by = 10
 
-    queryset = Accountancy.objects.filter(
-        q_filter &
-        Q(datetime__month=month) &
-        Q(datetime__year=year)
-    ).order_by("-datetime").values(
-        "id", "IO", "IO_type", "amount", "datetime"
-    )
-
-    # Search form
-    IO_type = request.GET.get("IO_type", "")
-    search_form = AccountancySearchForm(
-        initial={
-            "IO_type": IO_type
-        }
-    )
-
-    form = AccountancySearchForm(request.GET)
-    if form.is_valid():
-        queryset = queryset.filter(
-            IO_type__icontains=form.cleaned_data["IO_type"]
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(MonthlyAccountancy, self).get_context_data(**kwargs)
+        IO_type = self.request.GET.get("IO_type", "")
+        context["search_form"] = AccountancySearchForm(
+            initial={
+                "IO_type": IO_type
+            }
         )
 
-    # Custom pagination
-    paginate_by = 10
-    page = request.GET.get('page', 1)
-    paginator = Paginator(queryset, paginate_by)
+        return context
 
-    try:
-        page_obj = paginator.page(page)
-    except PageNotAnInteger:
-        page_obj = paginator.page(1)
-    except EmptyPage:
-        page_obj = paginator.page(paginator.num_pages)
+    def get_queryset(self):
+        details = self.request.resolver_match.kwargs
+        q_filter, wallet_obj = wallet_choice(
+            details["wallet"], details["wallet_id"]
+        )
 
-    if queryset.count() < paginate_by:
-        is_paginated = False
-    else:
-        is_paginated = True
+        self.queryset = self.model.objects.filter(
+            q_filter &
+            Q(datetime__month=details["month"]) &
+            Q(datetime__year=details["year"])
+        ).order_by("-datetime").values(
+            "id", "IO", "IO_type", "amount", "datetime"
+        )
 
-    context = {
-        "monthly_accountancy": page_obj,
-        "search_form": search_form,
-        "paginator": paginator,
-        "page_obj": page_obj,
-        "wallet": wallet,
-        "wallet_name": wallet_obj,
-        "is_paginated": is_paginated,
-    }
-    return render(request, "manager/monthly_accountancy.html", context=context)
+        form = AccountancySearchForm(self.request.GET)
+        if form.is_valid():
+            return self.queryset.filter(
+                IO_type__icontains=form.cleaned_data["IO_type"]
+            )
+
+        return self.queryset
 
 
 class AccountancyUpdate(LoginRequiredMixin, generic.UpdateView):

@@ -15,7 +15,7 @@ from .views import (
     wallets,
     index,
     MonthlyAccountancyList,
-    monthly_accountancy,
+    MonthlyAccountancy,
     AccountancyUpdate,
     AccountancyDelete,
 )
@@ -66,7 +66,7 @@ urlpatterns = [
     ),
     path(
         "accountancy/<str:wallet>/<int:wallet_id>/<int:month>/<int:year>/",
-        monthly_accountancy,
+        MonthlyAccountancy.as_view(),
         name="monthly-accountancy"
     ),
     path(

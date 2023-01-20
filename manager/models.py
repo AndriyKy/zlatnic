@@ -1,5 +1,6 @@
 from decimal import Decimal
 
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -22,7 +23,7 @@ class Currency(models.Model):
 
 class Card(models.Model):
     user = models.ForeignKey(
-        User,
+        get_user_model(),
         on_delete=models.CASCADE,
         related_name="cards"
     )
@@ -59,7 +60,7 @@ class Card(models.Model):
 
 class Cash(models.Model):
     user = models.ForeignKey(
-        User,
+        get_user_model(),
         on_delete=models.CASCADE,
         related_name="cash"
     )
@@ -95,7 +96,7 @@ class Cash(models.Model):
 
 class Cryptocurrency(models.Model):
     user = models.ForeignKey(
-        User,
+        get_user_model(),
         on_delete=models.CASCADE,
         related_name="cryptocurrencies"
     )

@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
+from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
-from .models import (
-    User,
+from manager.models import (
     Currency,
     Card,
     Cash,
@@ -11,7 +11,7 @@ from .models import (
 )
 
 
-@admin.register(User)
+@admin.register(get_user_model())
 class UserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
         (("Additional info", {"fields": ("phone_number",)}),)

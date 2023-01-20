@@ -139,7 +139,7 @@ class PrivateViewsTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
-            list(response.context["monthly_accountancy"]),
+            list(response.context["accountancy_list"]),
             list(accountancy)
         )
         self.assertTemplateUsed(

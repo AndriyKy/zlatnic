@@ -237,7 +237,7 @@ input {
 }
 
 .wrapper {
-  min-height: 67vh;
+  min-height: 68vh;
   max-width: var(--main-max-width);
   margin: 0 auto;
 }

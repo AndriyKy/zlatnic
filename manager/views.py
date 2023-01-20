@@ -9,7 +9,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
-from datetime import date
 
 from manager.forms import (
     AccountancyForm,
@@ -17,29 +16,18 @@ from manager.forms import (
     NewUserForm,
     UserAccountForm
 )
-
 from manager.models import (
     Card,
     Cash,
     Cryptocurrency,
     Accountancy
 )
-
-
-def wallet_choice(wallet: str, wallet_id: int):
-    q_filter, wallet_obj = Q(), None
-
-    if wallet == "card":
-        q_filter = Q(card=wallet_id)
-        wallet_obj = Card.objects.get(id=wallet_id)
-    elif wallet == "cash":
-        q_filter = Q(cash=wallet_id)
-        wallet_obj = Cash.objects.get(id=wallet_id)
-    elif wallet == "crypto":
-        q_filter = Q(cryptocurrency=wallet_id)
-        wallet_obj = Cryptocurrency.objects.get(id=wallet_id)
-
-    return q_filter, wallet_obj
+from manager.wallet_operations import (
+    wallet_choice,
+    monthly_financial_turnover,
+    wallet_data_parse,
+    change_wallet_balance,
+)
 
 
 def wallet_objects(request):
@@ -169,9 +157,10 @@ def index(request):
         for crypto in crypto:
             wallets_set.append([f"crypto - {crypto.id}", crypto])
 
+    # Check whether POST includes any wallet data to process
     if "wallet_choice" in request.POST and request.POST["wallet_choice"]:
-        wallet_data = request.POST["wallet_choice"].split(" - ")
-        q_filter, wallet_obj = wallet_choice(wallet_data[0], wallet_data[1])
+        wallet_type, wallet_id = wallet_data_parse(request.POST)
+        q_filter, wallet_obj = wallet_choice(wallet_type, wallet_id)
 
         if ("Outcome" in request.POST or request.POST["Income"] != "none")\
                 and request.POST["amount"]:
@@ -180,14 +169,7 @@ def index(request):
             expense = "Outcome" if "Outcome" in request.POST else "Income"
 
             try:
-                if expense == "Outcome" and wallet_obj.balance < amount:
-                    raise ValidationError(
-                        "There's too small amount of money on the balance"
-                    )
-                elif expense == "Outcome":
-                    wallet_obj.balance = float(wallet_obj.balance) - amount
-                elif expense == "Income":
-                    wallet_obj.balance = float(wallet_obj.balance) + amount
+                wallet_obj = change_wallet_balance(expense, wallet_obj, amount)
 
                 acc_data = {
                     "IO": expense[0],
@@ -195,19 +177,18 @@ def index(request):
                     "amount": amount,
                 }
 
-                if wallet_data[0] == "card":
+                if wallet_type == "card":
                     accountancy.create(card=wallet_obj, **acc_data)
-                elif wallet_data[0] == "cash":
+                elif wallet_type == "cash":
                     accountancy.create(cash=wallet_obj, **acc_data)
-                elif wallet_data[0] == "crypto":
+                elif wallet_type == "crypto":
                     accountancy.create(
                         cryptocurrency=wallet_obj, **acc_data
                     )
                 wallet_obj.save()
-            except ValidationError:
-                error = ValidationError(
-                    "There's too small amount of money on the balance"
-                )
+
+            except ValidationError as ve:
+                error = ve
 
         # Move selected wallet at the top
         for wallet_index, wallet in enumerate(wallets_set):
@@ -215,18 +196,12 @@ def index(request):
                 wallets_set.insert(0, wallets_set.pop(wallet_index))
                 wallets_set[0][1] = wallet_obj
                 break
+
         current_balance = wallets_set[0][1].balance
 
         # Get monthly incomes and outcomes
-        income = accountancy.filter(
-            q_filter & Q(IO="I") & Q(datetime__month=date.today().month)
-        ).aggregate(Sum("amount"))["amount__sum"]
-        income = round(income, 8) if income else 0
-
-        outcome = accountancy.filter(
-            q_filter & Q(IO="O") & Q(datetime__month=date.today().month)
-        ).aggregate(Sum("amount"))["amount__sum"]
-        outcome = round(outcome, 8) if outcome else 0
+        income = monthly_financial_turnover(q_filter, "I")
+        outcome = monthly_financial_turnover(q_filter, "O")
 
     context = {
         "wallets": wallets_set,
@@ -275,7 +250,7 @@ class MonthlyAccountancyList(LoginRequiredMixin, generic.ListView):
 
 @login_required
 def monthly_accountancy(request, wallet, wallet_id, month, year):
-    q_filter, wallet_name = wallet_choice(wallet, wallet_id)
+    q_filter, wallet_obj = wallet_choice(wallet, wallet_id)
 
     queryset = Accountancy.objects.filter(
         q_filter &
@@ -322,7 +297,7 @@ def monthly_accountancy(request, wallet, wallet_id, month, year):
         "paginator": paginator,
         "page_obj": page_obj,
         "wallet": wallet,
-        "wallet_name": wallet_name,
+        "wallet_name": wallet_obj,
         "is_paginated": is_paginated,
     }
     return render(request, "manager/monthly_accountancy.html", context=context)

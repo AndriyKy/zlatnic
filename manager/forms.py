@@ -3,7 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 
-from .models import Card, Cash, Cryptocurrency, Accountancy
+from manager.models import Accountancy
+from manager.wallet_operations import wallet_choice, wallet_data_parse, change_wallet_balance
 
 
 class NewUserForm(UserCreationForm):
@@ -58,26 +59,16 @@ class AccountancyForm(forms.ModelForm):
         if amount < 0:
             raise ValidationError("Amount can't be negative.")
 
-        wallet_data = self.data["wallet_choice"].split(" - ")
-        amount = amount - float(wallet_data[1]) if wallet_data[1] else 0
+        wallet_type, previous_amount = wallet_data_parse(self.data)
+        _, self.wallet_obj = wallet_choice(
+            wallet_type,
+            self.instance.card_id or self.instance.cash_id or self.instance.cryptocurrency_id
+        )
+        amount = amount - float(previous_amount) if previous_amount else 0
 
-        if wallet_data[0] == "card":
-            self.wallet_obj = Card.objects.get(id=self.instance.card_id)
-        elif wallet_data[0] == "cash":
-            self.wallet_obj = Cash.objects.get(id=self.instance.cash_id)
-        elif wallet_data[0] == "crypto":
-            self.wallet_obj = Cryptocurrency.objects.get(
-                id=self.instance.cryptocurrency_id
-            )
-
-        if self.instance.IO == "O" and self.wallet_obj.balance < amount:
-            raise ValidationError(
-                "There's too small amount of money on the balance"
-            )
-        elif self.instance.IO == "O":
-            self.wallet_obj.balance = float(self.wallet_obj.balance) - amount
-        elif self.instance.IO == "I":
-            self.wallet_obj.balance = float(self.wallet_obj.balance) + amount
+        self.wallet_obj = change_wallet_balance(
+            self.instance.IO, self.wallet_obj, amount
+        )
 
         return super().clean()
 

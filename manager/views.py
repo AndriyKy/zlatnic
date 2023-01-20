@@ -39,6 +39,8 @@ def wallet_objects(request):
 
 
 def register_request(request):
+    """User registration function-based view"""
+
     if request.method == "POST":
         form = NewUserForm(request.POST)
         if form.is_valid():
@@ -56,6 +58,8 @@ def register_request(request):
 
 @login_required
 def user_account(request):
+    """Function-based view for user data changing"""
+
     if request.method == "POST":
         form = UserAccountForm(request.POST, instance=request.user)
         if form.is_valid():
@@ -135,7 +139,7 @@ class CryptoDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 @login_required
 def index(request):
-    """View function for the base page of the site."""
+    """Function-based view for the base page of the site."""
 
     wallets_set = []
     error = False
@@ -269,6 +273,7 @@ class MonthlyAccountancy(LoginRequiredMixin, generic.ListView):
             details["wallet"], details["wallet_id"]
         )
 
+        # Get accountancy per specific month & year
         self.queryset = self.model.objects.filter(
             q_filter &
             Q(datetime__month=details["month"]) &

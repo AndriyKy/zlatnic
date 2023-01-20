@@ -19,8 +19,6 @@ from manager.forms import (
 )
 
 from manager.models import (
-    User,
-    Currency,
     Card,
     Cash,
     Cryptocurrency,
@@ -29,6 +27,8 @@ from manager.models import (
 
 
 def wallet_choice(wallet: str, wallet_id: int):
+    q_filter, wallet_obj = Q(), None
+
     if wallet == "card":
         q_filter = Q(card=wallet_id)
         wallet_obj = Card.objects.get(id=wallet_id)
@@ -43,13 +43,12 @@ def wallet_choice(wallet: str, wallet_id: int):
 
 
 def wallet_objects(request):
-    user = User.objects.get(id=request.user.id)
-    currency = Currency.objects.all()
-    cards = user.cards.all()
-    cash_types = user.cash.all()
+    user = request.user
+    cards = user.cards.select_related("currency")
+    cash_types = user.cash.select_related("currency")
     crypto = user.cryptocurrencies.all()
 
-    return currency, cards, cash_types, crypto
+    return cards, cash_types, crypto
 
 
 def register_request(request):
@@ -86,7 +85,7 @@ def user_account(request):
 
 @login_required
 def wallets(request):
-    _, cards, cash_types, crypto = wallet_objects(request)
+    cards, cash_types, crypto = wallet_objects(request)
 
     context = {
         "cards_list": cards,
@@ -156,7 +155,7 @@ def index(request):
     current_balance = income = outcome = 0
     accountancy = Accountancy.objects
 
-    _, cards, cash_types, crypto = wallet_objects(request)
+    cards, cash_types, crypto = wallet_objects(request)
 
     if cards:
         for card in cards:

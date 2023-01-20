@@ -391,24 +391,23 @@ input {
 
 .yellow_plate {
   position: relative;
-  min-height: 312px;
-  display: flex;
+  padding: 20px;
+  min-height: fit-content;
+  display: grid;
   flex-wrap: wrap;
   align-items: center;
   background: var(--main-yellow);
   border: var(--main-border) white;
-  border-end-start-radius: var(--big-radius);
-  border-end-end-radius: var(--big-radius);
   box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.2),
     inset 0 25px 40px 3px rgba(0, 0, 0, 0.17),
     inset 0 -35px 35px 3px rgba(255, 239, 188, 0.6);
+  border-radius: var(--big-radius);
 }
 
-.yellow_plate_init {
-  display: grid;
-  min-height: fit-content;
-  padding: 20px;
-  border-radius: var(--big-radius);
+.custom_yellow_plate {
+  min-height: 312px;
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
 }
 
 .wallet_select {

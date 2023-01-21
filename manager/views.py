@@ -1,10 +1,8 @@
-from django.contrib.auth import login
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.db.models import Q, Sum
 from django.db.models.functions import TruncMonth, Round
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
@@ -12,15 +10,8 @@ from django.views import generic
 from manager.forms import (
     AccountancyForm,
     AccountancySearchForm,
-    NewUserForm,
-    UserAccountForm
 )
-from manager.models import (
-    Card,
-    Cash,
-    Cryptocurrency,
-    Accountancy
-)
+from manager.models import Card, Cash, Cryptocurrency, Accountancy
 from manager.wallet_operations import (
     wallet_choice,
     monthly_financial_turnover,
@@ -38,42 +29,6 @@ def wallet_objects(request):
     return cards, cash_types, crypto
 
 
-def register_request(request):
-    """User registration function-based view"""
-
-    if request.method == "POST":
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect("manager:wallets")
-        messages.error(
-            request, "Unsuccessful registration. Invalid information."
-        )
-    form = NewUserForm()
-    return render(
-        request, "registration/register.html", {"form": form}
-    )
-
-
-@login_required
-def user_account(request):
-    """Function-based view for user data changing"""
-
-    if request.method == "POST":
-        form = UserAccountForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect("manager:index")
-        messages.error(
-            request, "Invalid information."
-        )
-    form = UserAccountForm()
-    return render(
-        request, "manager/account.html", {"form": form}
-    )
-
-
 @login_required
 def wallets(request):
     cards, cash_types, crypto = wallet_objects(request)
@@ -88,13 +43,24 @@ def wallets(request):
 
 class CardCreateView(LoginRequiredMixin, generic.CreateView):
     model = Card
-    fields = ("user", "bank_name", "type", "balance", "currency",)
+    fields = (
+        "user",
+        "bank_name",
+        "type",
+        "balance",
+        "currency",
+    )
     success_url = reverse_lazy("manager:wallets")
 
 
 class CardUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Card
-    fields = ("user", "bank_name", "type", "currency",)
+    fields = (
+        "user",
+        "bank_name",
+        "type",
+        "currency",
+    )
     success_url = reverse_lazy("manager:wallets")
 
 
@@ -105,13 +71,19 @@ class CardDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class CashCreateView(LoginRequiredMixin, generic.CreateView):
     model = Cash
-    fields = ("user", "currency",)
+    fields = (
+        "user",
+        "currency",
+    )
     success_url = reverse_lazy("manager:wallets")
 
 
 class CashUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Cash
-    fields = ("user", "currency",)
+    fields = (
+        "user",
+        "currency",
+    )
     success_url = reverse_lazy("manager:wallets")
 
 
@@ -122,13 +94,19 @@ class CashDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class CryptoCreateView(LoginRequiredMixin, generic.CreateView):
     model = Cryptocurrency
-    fields = ("user", "name",)
+    fields = (
+        "user",
+        "name",
+    )
     success_url = reverse_lazy("manager:wallets")
 
 
 class CryptoUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Cryptocurrency
-    fields = ("user", "name",)
+    fields = (
+        "user",
+        "name",
+    )
     success_url = reverse_lazy("manager:wallets")
 
 
@@ -165,8 +143,9 @@ def index(request):
         wallet_type, wallet_id = wallet_data_parse(request.POST)
         q_filter, wallet_obj = wallet_choice(wallet_type, wallet_id)
 
-        if ("Outcome" in request.POST or request.POST["Income"] != "none")\
-                and request.POST["amount"]:
+        if (
+            "Outcome" in request.POST or request.POST["Income"] != "none"
+        ) and request.POST["amount"]:
 
             amount = float(request.POST["amount"])
             expense = "Outcome" if "Outcome" in request.POST else "Income"
@@ -185,9 +164,7 @@ def index(request):
                 elif wallet_type == "cash":
                     accountancy.create(cash=wallet_obj, **acc_data)
                 elif wallet_type == "crypto":
-                    accountancy.create(
-                        cryptocurrency=wallet_obj, **acc_data
-                    )
+                    accountancy.create(cryptocurrency=wallet_obj, **acc_data)
                 wallet_obj.save()
 
             except ValidationError as ve:
@@ -226,27 +203,34 @@ class MonthlyAccountancyList(LoginRequiredMixin, generic.ListView):
         user_id = self.request.user.id
 
         # Get month expenses
-        self.queryset = self.model.objects.filter(
-            Q(card__user=user_id) |
-            Q(cash__user=user_id) |
-            Q(cryptocurrency__user=user_id)
-        ).annotate(
-            month=TruncMonth("datetime"),
-        ).values("month").annotate(
-            amount_sum=Round(Sum("amount"), 8),
-        ).values(
-            "card_id",
-            "card__bank_name",
-            "card__type",
-            "card__currency__sign",
-            "cash_id",
-            "cash__currency__name",
-            "cryptocurrency_id",
-            "cryptocurrency__name",
-            "IO",
-            "amount_sum",
-            "month"
-        ).order_by("-month")  # type: ignore
+        self.queryset = (
+            self.model.objects.filter(
+                Q(card__user=user_id)
+                | Q(cash__user=user_id)
+                | Q(cryptocurrency__user=user_id)
+            )
+            .annotate(
+                month=TruncMonth("datetime"),
+            )
+            .values("month")
+            .annotate(
+                amount_sum=Round(Sum("amount"), 8),
+            )
+            .values(
+                "card_id",
+                "card__bank_name",
+                "card__type",
+                "card__currency__sign",
+                "cash_id",
+                "cash__currency__name",
+                "cryptocurrency_id",
+                "cryptocurrency__name",
+                "IO",
+                "amount_sum",
+                "month",
+            )
+            .order_by("-month")
+        )  # type: ignore
 
         return self.queryset
 
@@ -259,34 +243,28 @@ class MonthlyAccountancy(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(MonthlyAccountancy, self).get_context_data(**kwargs)
         IO_type = self.request.GET.get("IO_type", "")
-        context["search_form"] = AccountancySearchForm(
-            initial={
-                "IO_type": IO_type
-            }
-        )
+        context["search_form"] = AccountancySearchForm(initial={"IO_type": IO_type})
 
         return context
 
     def get_queryset(self):
         details = self.request.resolver_match.kwargs
-        q_filter, wallet_obj = wallet_choice(
-            details["wallet"], details["wallet_id"]
-        )
+        q_filter, wallet_obj = wallet_choice(details["wallet"], details["wallet_id"])
 
         # Get accountancy per specific month & year
-        self.queryset = self.model.objects.filter(
-            q_filter &
-            Q(datetime__month=details["month"]) &
-            Q(datetime__year=details["year"])
-        ).order_by("-datetime").values(
-            "id", "IO", "IO_type", "amount", "datetime"
+        self.queryset = (
+            self.model.objects.filter(
+                q_filter
+                & Q(datetime__month=details["month"])
+                & Q(datetime__year=details["year"])
+            )
+            .order_by("-datetime")
+            .values("id", "IO", "IO_type", "amount", "datetime")
         )
 
         form = AccountancySearchForm(self.request.GET)
         if form.is_valid():
-            return self.queryset.filter(
-                IO_type__icontains=form.cleaned_data["IO_type"]
-            )
+            return self.queryset.filter(IO_type__icontains=form.cleaned_data["IO_type"])
 
         return self.queryset
 

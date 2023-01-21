@@ -1,51 +1,8 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 
 from manager.models import Accountancy
 from manager.wallet_operations import wallet_choice, wallet_data_parse, change_wallet_balance
-
-
-class NewUserForm(UserCreationForm):
-    email = forms.EmailField(required=True)
-
-    class Meta:
-        model = get_user_model()
-        fields = (
-            "first_name",
-            "last_name",
-            "username",
-            "email",
-            "password1",
-            "password2",
-            "phone_number"
-        )
-
-    def save(self, commit=True):
-        user = super(NewUserForm, self).save(commit=False)
-        user.email = self.cleaned_data['email']
-        if commit:
-            user.save()
-        return user
-
-
-class UserAccountForm(UserChangeForm):
-    class Meta:
-        model = get_user_model()
-        fields = (
-            "first_name",
-            "last_name",
-            "username",
-            "email",
-            "phone_number"
-        )
-
-    def save(self, commit=True):
-        user = super(UserAccountForm, self).save(commit=False)
-        if commit:
-            user.save()
-        return user
 
 
 class AccountancyForm(forms.ModelForm):

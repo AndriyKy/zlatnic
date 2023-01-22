@@ -16,6 +16,7 @@ class NewUserForm(UserCreationForm):
             "password1",
             "password2",
             "phone_number",
+            "image",
         )
 
     def save(self, commit=True):
@@ -29,10 +30,11 @@ class NewUserForm(UserCreationForm):
 class UserAccountForm(UserChangeForm):
     class Meta:
         model = get_user_model()
-        fields = ("first_name", "last_name", "username", "email", "phone_number")
-
-    def save(self, commit=True):
-        user = super(UserAccountForm, self).save(commit=False)
-        if commit:
-            user.save()
-        return user
+        fields = (
+            "first_name",
+            "last_name",
+            "username",
+            "email",
+            "phone_number",
+            "image",
+        )

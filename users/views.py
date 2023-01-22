@@ -1,7 +1,9 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, get_user_model
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.views import generic
 
 from users.forms import NewUserForm, UserAccountForm
 
@@ -20,15 +22,13 @@ def register_request(request):
     return render(request, "registration/register.html", {"form": form})
 
 
-@login_required
-def user_account(request):
-    """Function-based view for user data changing"""
+class UserUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = get_user_model()
+    form_class = UserAccountForm
+    success_url = reverse_lazy("manager:index")
 
-    if request.method == "POST":
-        form = UserAccountForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect("manager:index")
-        messages.error(request, "Invalid information.")
-    form = UserAccountForm()
-    return render(request, "users/account.html", {"form": form})
+    def get_form_kwargs(self):
+        kwargs = super(UserUpdateView, self).get_form_kwargs()
+        kwargs["files"] = self.request.FILES
+
+        return kwargs

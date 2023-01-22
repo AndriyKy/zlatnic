@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>ZLATNIC - Accountancy</title>{% endblock %}
+
+{% block content %}
+  <div class="yellow_plate">
+    <div>
+      <form method="POST" enctype="multipart/form-data" class="registration fit_content">
+        {% csrf_token %}
+
+        <h1 style="padding-left: 34px;" class="regular_text_shadow">
+          {{ user.first_name }} {{ user.last_name }}
+        </h1>
+
+        <div class="big_plate">
+          <label for="id_first_name"></label>
+          <input type="text"
+                 placeholder="First name"
+                 name="first_name"
+                 value="{{ user.first_name }}"
+                 maxlength="150"
+                 autofocus
+                 id="id_first_name"
+                 class="input_data">
+          {{ form.first_name.errors }}
+        </div>
+        <div class="big_plate">
+          <label for="id_last_name"></label>
+          <input type="text"
+                 placeholder="Last name"
+                 name="last_name"
+                 value="{{ user.last_name }}"
+                 maxlength="150"
+                 id="id_last_name"
+                 class="input_data">
+          {{ form.last_name.errors }}
+        </div>
+        <div class="big_plate">
+          <label for="id_username"></label>
+          <input type="text"
+                 placeholder="Username*"
+                 value="{{ user.username }}"
+                 name="username"
+                 maxlength="150"
+                 required
+                 id="id_username"
+                 class="input_data">
+          {{ form.username.errors }}
+        </div>
+        <div class="yellow_plate yellow_plate_init text_shadow">
+          <b>Pay attention!</b> <br>
+          - 150 characters or fewer. Letters, digits and / @ / . / + / - / _ / only.
+        </div>
+        <div class="big_plate">
+          <label for="id_email"></label>
+          <input type="email"
+                 placeholder="Email*"
+                 name="email"
+                 value="{{ user.email }}"
+                 id="id_email"
+                 required
+                 class="input_data">
+          {{ form.email.errors }}
+        </div>
+        <div class="big_plate">
+          <label for="id_phone_number"></label>
+          <input type="tel"
+                 placeholder="Phone number"
+                 name="phone_number"
+                 value="{{ user.phone_number }}"
+                 maxlength="128"
+                 id="id_phone_number"
+                 class="input_data">
+          {{ form.phone_number.errors }}
+        </div>
+        <div class="big_plate">
+          <label for="id_image"></label>
+          {{ form.image }}
+          {{ form.image.errors }}
+        </div>
+
+        <div class="big_plate">
+          <a href="{% url 'logout' %}">Logout</a>
+        </div>
+
+        <input type="submit" value="Save" class="button orange_background text_shadow">
+        <a href="{% url 'manager:index' %}" class="button orange_background text_shadow">Cancel</a>
+        <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+
+    </div>
+  </div>
+{% endblock content %}

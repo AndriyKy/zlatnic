@@ -22,10 +22,10 @@
       </thead>
 
       <tbody>
-        {% if monthly_accountancy %}
-          {% for item in monthly_accountancy %}
+        {% if accountancy_list %}
+          {% for item in accountancy_list %}
             <tr>
-              <td class="visible_sell">{{ item.IO }}</td>
+              <td class="visible_sell">{% if item.IO == "I" %}Income{% else %}Outcome{% endif %}</td>
               <td class="visible_sell">{{ item.IO_type }}</td>
               <td class="visible_sell">{{ item.amount }}</td>
               <td class="visible_sell">{{ item.datetime|date:"D., d.m.Y" }}</td>

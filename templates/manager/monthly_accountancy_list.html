@@ -42,7 +42,7 @@
                   </a>
                 {% endif %}
               </td>
-              <td class="visible_sell">{{ acc.IO }}</td>
+              <td class="visible_sell">{% if acc.IO == "I" %}Income{% else %}Outcome{% endif %}</td>
               <td class="visible_sell">{{ acc.amount_sum }}</td>
               <td class="visible_sell">{{ acc.month|date:"M-Y" }}</td>
             </tr>

@@ -6,7 +6,17 @@ from django.contrib.auth.admin import UserAdmin
 @admin.register(get_user_model())
 class UserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
-        (("Additional info", {"fields": ("phone_number",)}),)
+        (
+            (
+                "Additional info",
+                {
+                    "fields": (
+                        "phone_number",
+                        "image",
+                    )
+                },
+            ),
+        )
     )  # type: ignore
     add_fieldsets = UserAdmin.add_fieldsets + (
         (
@@ -17,9 +27,13 @@ class UserAdmin(UserAdmin):
                         "first_name",
                         "last_name",
                         "phone_number",
+                        "image",
                     ),
                 },
             ),
         )
     )
-    list_display = UserAdmin.list_display + ("phone_number",)  # type: ignore
+    list_display = UserAdmin.list_display + (
+        "phone_number",
+        "image",
+    )  # type: ignore

@@ -22,10 +22,10 @@
     <table style="direction: rtl;">
       <tr>
         <td rowspan="2" class="drop_menu">
-          <a href="{% url 'users:account' %}">
-            <img 
-              class="profile_picture" 
-              src="/static/source/Profile_picture.jpg"
+          <a href="{% url 'users:account' user.pk %}">
+            <img
+              class="profile_picture"
+              src="{% if user.image %}{{ user.image.url }}{% else %}/static/source/Profile_picture.jpg{% endif %}"
               alt="profile_picture">
           </a>
         </td>

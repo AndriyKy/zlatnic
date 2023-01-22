@@ -288,9 +288,9 @@ input {
 
 .profile_picture {
   margin-inline: 10px;
-  width: 60px;
+  width: auto;
   height: 60px;
-  border-radius: 100%;
+  border-radius: var(--big-radius);
 }
 
 /* Top section of main content */
@@ -556,6 +556,22 @@ footer {
 .registration {
   display: block;
   max-width: 400px;
+}
+
+input[type="file"] {
+  font-family: inherit;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+input::file-selector-button {
+  padding: 3px;
+  font-family: inherit;
+  font-weight: bold;
+  color: var(--main-black);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+  border: var(--main-border) var(--main-black);
+  border-radius: var(--small-radius);
+  background-color: #00000000;
+  cursor: pointer;
 }
 
 .input_data {
